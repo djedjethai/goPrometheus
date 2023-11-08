@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  server:
+    build: server/.
+    image: prometheus/start:v0.0.1
+    ports:
+      - "3000:3000"
+      - "2223:2223"
+      - "8000:8000"
+
+  prometheus:
+    image: 'prom/prometheus:v2.23.0'
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  
+
